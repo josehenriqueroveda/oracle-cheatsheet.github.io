@@ -135,6 +135,13 @@ ALTER TABLE table_name
 DROP TABLE table_name;
 ```
 
+<h3>TRUNCATE TABLE</h3>
+<p>- Remove all records from a table, including all spaces allocated for the records are removed</p>
+
+```sql
+TRUNCATE TABLE table_name;
+```
+
 
 ## DML - Data Manipulation Language
 
@@ -144,21 +151,21 @@ DROP TABLE table_name;
 ```sql
 /*Returns all registers on the table*/
 SELECT *
-FROM table_name
+FROM table_name;
 ```
 
 ```sql
 /*Returns the registers based in a condition*/
 SELECT *
 FROM table_name
-WHERE condition
+WHERE condition;
 ```
 
 <h3>DESCRIBE</h3>
 <p>- Command to describe the structure of a table</p>
 
 ```sql
-DESCRIBE table_name
+DESCRIBE table_name;
 ```
 
 <h3>INSERT</h3>
@@ -179,7 +186,7 @@ VALUES (value1, value2, value3, ... valueN);
 ```sql
 UPDATE table_name
   SET column1 = new_value1, column2 = new_value2,
-WHERE condition
+WHERE condition;
 ```
 
 ⚠️ **DO NOT FORGET THE "WHERE" CLAUSE**
@@ -188,7 +195,7 @@ WHERE condition
 
 ```sql
 UPDATE table_name
-  SET column4 = NULL
+  SET column4 = NULL;
 ```
 
 <h3>DELETE</h3>
@@ -197,7 +204,7 @@ UPDATE table_name
 
 ```sql
 DELETE table_name
-WHERE condition
+WHERE condition;
 ```
 
 ## TCL - Transaction Control Language 
@@ -298,4 +305,133 @@ END;
     <td style="text-align:center"><b><p style="color:cornflowerblue; font-size:20px; text-align:center">IS INFINITE</p></b></td>
     <td style="text-align:center"><p style="color:cornflowerblue; font-size:20px; text-align:center">Matches to infinite numbers</p></td>
   </tr>
+  <tr>
+    <td style="text-align:center"><h5>Logical Operator</h5></td>
+    <td style="text-align:center"><h5>Description</h5></td>
+  </tr>
+  <tr>
+    <td style="text-align:center"><b><p style="color:cornflowerblue; font-size:20px; text-align:center">x AND y</p></b></td>
+    <td style="text-align:center"><p style="color:cornflowerblue; font-size:20px; text-align:center">Returns TRUE when x and y are true</p></td>
+  </tr>
+  <tr>
+    <td style="text-align:center"><b><p style="color:cornflowerblue; font-size:20px; text-align:center">x OR y</p></b></td>
+    <td style="text-align:center"><p style="color:cornflowerblue; font-size:20px; text-align:center">Returns TRUE when x or y are true</p></td>
+  </tr>
+   <tr>
+    <td style="text-align:center"><b><p style="color:cornflowerblue; font-size:20px; text-align:center">NOT x</p></b></td>
+    <td style="text-align:center"><p style="color:cornflowerblue; font-size:20px; text-align:center">Returns TRUE if x is false and returns false if x is true</p></td>
+  </tr>
 </table> 
+
+<p>Searching for customers with the initial letter of the name 'J':</p>
+
+```sql
+SELECT *
+FROM tb_customers
+WHERE first_name LIKE 'J%';
+```
+
+<p>Searching for customers with the second letter of the name 'o':</p>
+
+```sql
+/* the _ corresponds to any character in that position and % to all characters after it*/
+SELECT *
+FROM tb_customers
+WHERE first_name LIKE '_o%';
+```
+
+<p>Searching for customers with with the ids corresponding to those shown:</p>
+
+```sql
+/* the _ corresponds to any character in that position and % to all characters after it*/
+SELECT *
+FROM tb_customers
+WHERE id_customer IN (104, 120, 117);
+```
+
+<p>Filtering products with values between 50 and 100 dollars:</p>
+
+```sql
+/* the _ corresponds to any character in that position and % to all characters after it*/
+SELECT *
+FROM tb_products
+WHERE price BETWEEN 50 AND 100;
+```
+
+<h4>ORDER BY</h4>
+
+<p>Sort rows in a query</p>
+
+```sql
+/* SORTING THE PRODUCTS BY PRICE*/
+SELECT *
+FROM tb_products
+ORDER BY 5; /*You can use Column index or Column name*/
+```
+
+# FUNCTIONS
+## Some of the most used functions:
+
+<h3>LOWER(column_name)</h3>
+<p>- Converts all registers in the column to lower case</p>
+<h3>UPPER(column_name)</h3>
+<p>- Converts all registers in the column to upper case</p>
+
+```sql
+SELECT UPPER(first_name), LOWER(last_name)
+FROM tb_customers;
+```
+
+<h3>CAST(x AS type)</h3>
+<p>- Converts <b>x</b> to the <b>type</b></p>
+
+```sql
+SELECT
+  CAST(price AS VARCHAR2(10)),
+  CAST(price + 5 AS NUMBER(7,2))
+FROM tb_products
+WHERE id_product = 117;
+```
+
+<h3>AVG(x)</h3>
+<p>- Returns the average value of <b>x</b></p>
+
+```sql
+SELECT AVG(price)
+FROM tb_products;
+```
+
+<h3>COUNT(x)</h3>
+<p>- Returns count of <b>x</b></p>
+
+```sql
+SELECT COUNT(ROWID)
+FROM tb_sales;
+```
+
+<h3>MAX(x)   MIN(x)</h3>
+<p>- Used to get the max or min values of <b>x</b></p>
+
+```sql
+SELECT product_name, price
+FROM tb_products
+WHERE price = (SELECT MAX(price) FROM tb_products);
+```
+
+<h3>SUM(x)</h3>
+<p>- Sums up all values ​​in column X and returns the total</p>
+
+```sql
+SELECT SUM(price)
+FROM tb_products;
+```
+
+
+---
+
+### About
+
+* Feel free to contribute.
+* If you liked it, give it a ⭐️ **star** in the [repository](https://github.com/josehenriqueroveda/oracle-cs.github.io).
+
+Find me on [LinkedIn](https://www.linkedin.com/in/jhroveda/)
