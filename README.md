@@ -1,4 +1,4 @@
-[![btn](https://raw.githubusercontent.com/josehenriqueroveda/oracle-cs.github.io/master/button.png)](https://josehenriqueroveda.github.io/oracle-cs.github.io/)
+[![btn](https://raw.githubusercontent.com/josehenriqueroveda/oracle-cs.github.io/master/button.png)](https://josehenriqueroveda.github.io/oracle-cs/)
 
 
 ### Cheat sheet for Oracle Database quick reference
