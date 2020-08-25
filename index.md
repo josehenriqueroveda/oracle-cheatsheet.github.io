@@ -55,7 +55,7 @@ An overview of the built-in Oracle data types:
 
 
 ## DDL - Data Definition Language
-<p>For instance here is going to be used a small market database.</p>
+<p>For instance here is going to be used a small market database</p>
 <h3>CREATE TABLE</h3>
 <p>- To create database and its objects like (table, index, views, store procedure, function and triggers)</p>
 
@@ -120,6 +120,22 @@ CREATE TABLE tb_sales(
 );
 ```
 
+<h3>ALTER TABLE</h3>
+<p>- Used to add, modify, or drop/delete columns in a table</p>
+
+```sql
+ALTER TABLE table_name
+  ADD column_name column_definition;
+```
+
+<h3>DROP TABLE</h3>
+<p>- Allows you to remove or delete a table from the Oracle database</p>
+
+```sql
+DROP TABLE table_name;
+```
+
+
 ## DML - Data Manipulation Language
 
 <h3>SELECT</h3>
@@ -129,6 +145,13 @@ CREATE TABLE tb_sales(
 /*Returns all registers on the table*/
 SELECT *
 FROM table_name
+```
+
+```sql
+/*Returns the registers based in a condition*/
+SELECT *
+FROM table_name
+WHERE condition
 ```
 
 <h3>DESCRIBE</h3>
@@ -147,6 +170,35 @@ INSERT INTO table_name (column1, column2, column3, ... columnN)
 VALUES (value1, value2, value3, ... valueN);
 ```
 
+<h3>UPDATE</h3>
+<p>- Update existing records in a table in an Oracle database</p>
+<p>- In the statement, the table containing the rows to be changed must be specified</p>
+<p>- A <b>SET</b> clause that contains the columns and the new values</p>
+<p>- A <b>WHERE</b> clause that specifies the rows to be changed</p>
+
+```sql
+UPDATE table_name
+  SET column1 = new_value1, column2 = new_value2,
+WHERE condition
+```
+
+⚠️ **DO NOT FORGET THE "WHERE" CLAUSE**
+
+<p>You can also use it to clear all values in a column:</p>
+
+```sql
+UPDATE table_name
+  SET column4 = NULL
+```
+
+<h3>DELETE</h3>
+<p>- Remove rows in a table</p>
+<p>- You can use <b>WHERE</b> clause to specifies the rows to be removed, if you don't use it, all the rows will be removed</p>
+
+```sql
+DELETE table_name
+WHERE condition
+```
 
 ## TCL - Transaction Control Language 
 
@@ -155,3 +207,95 @@ VALUES (value1, value2, value3, ... valueN);
 
 <h3>ROLLBACK</h3>
 <p>- Undo operations</p>
+
+
+## PL/SQL Procedural Language for SQL
+<p>- Allows to use programming in SQL instructions</p>
+<p>- Widely used in creating procedures and functions</p>
+
+Some features to highlight are:
+* Variables
+* Conditional logic (**if-then-else**)
+* Loops
+* Procedures
+* Functions
+
+
+<p>Below is an example of a procedure to search for a customer:</p>
+
+```sql
+CREATE OR REPLACE PROCEDURE get_customer(p_id_customer IN tb_customers.id_customer%TYPE)
+AS
+v_first_name      tb.customers.first_name%TYPE;
+v_last_name       tb.customers.last_name%TYPE;
+v_control         INTEGER;
+
+BEGIN
+  SELECT COUNT(*) INTO v_control
+  FROM tb_customers
+  WHERE id_customer = p_id_customer;
+  
+  IF(v_control == 1) THEN
+    SELECT first_name, last_name INTO v_first_name, v_last_name
+    FROM tb_customers
+    WHERE id_customer = p_id_customer;
+    
+    DBMS_OUTPUT.PUT_LINE('Customer found: ' || v_first_name || ' ' || v_last_name);
+  
+  ELSE
+    DBMS_OUTPUT.PUT_LINE('Customer not found');
+  END IF;
+  
+  EXCEPTION
+    WHEN OTHERS THEN
+      DBMS_OUTPUT.PUT_LINE('Error');
+
+END get_customer;
+```
+
+<p>Calling the procedure:</p>
+
+```sql
+SET SERVEROUTPUT ON /*Shows the DBMS outputs on console*/
+
+/*You can call the procedure by:*/
+CALL get_customer(7);
+
+/*Or in an anonymous PL/SQL block*/
+BEGIN
+  get_customer(7);
+END;
+```
+
+## SQL OPERATORS
+
+ <table style="width:100%">
+  <tr>
+    <td style="text-align:center"><h5>Operator</h5></td>
+    <td style="text-align:center"><h5>Description</h5></td>
+  </tr>
+  <tr>
+    <td style="text-align:center"><b><p style="color:cornflowerblue; font-size:20px; text-align:center">LIKE</p></b></td>
+    <td style="text-align:center"><p style="color:cornflowerblue; font-size:20px; text-align:center">Matches a string pattern</p></td>
+  </tr>
+  <tr>
+    <td style="text-align:center"><b><p style="color:cornflowerblue; font-size:20px; text-align:center">IN</p></b></td>
+    <td style="text-align:center"><p style="color:cornflowerblue; font-size:20px; text-align:center">Matches a list of values</p></td>
+  </tr>
+  <tr>
+    <td style="text-align:center"><b><p style="color:cornflowerblue; font-size:20px; text-align:center">BETWEEN</p></b></td>
+    <td style="text-align:center"><p style="color:cornflowerblue; font-size:20px; text-align:center">Matches a range of values</p></td>
+  </tr>
+  <tr>
+    <td style="text-align:center"><b><p style="color:cornflowerblue; font-size:20px; text-align:center">IS NULL</p></b></td>
+    <td style="text-align:center"><p style="color:cornflowerblue; font-size:20px; text-align:center">Matches null values</p></td>
+  </tr>
+  <tr>
+    <td style="text-align:center"><b><p style="color:cornflowerblue; font-size:20px; text-align:center">IS NAN</p></b></td>
+    <td style="text-align:center"><p style="color:cornflowerblue; font-size:20px; text-align:center">Matches to a special value (Not a Number)</p></td>
+  </tr>
+  <tr>
+    <td style="text-align:center"><b><p style="color:cornflowerblue; font-size:20px; text-align:center">IS INFINITE</p></b></td>
+    <td style="text-align:center"><p style="color:cornflowerblue; font-size:20px; text-align:center">Matches to infinite numbers</p></td>
+  </tr>
+</table> 
