@@ -15,6 +15,8 @@ Some features to highlight are:
 * **Backup and recovery** – ensure the integrity of the data in case of system failure. Oracle includes a powerful tool called Recovery Manager (RMAN) – allows DBA to perform cold, hot, and incremental database backups and point-in-time recoveries.
 * **Clustering** – Oracle Real Application Clusters (RAC) – Oracle enables high availability that enables the system is up and running without interruption of services in case one or more server in a cluster fails.
 
+---
+
 # Main data types
 An overview of the built-in Oracle data types:
 <h3>CHAR(length)</h3>
@@ -44,10 +46,9 @@ An overview of the built-in Oracle data types:
 
 <p></p>
 
-> The complete list of data types can be checked [in here](https://docs.oracle.com/cd/E11882_01/appdev.112/e10646/oci03typ.htm#LNOCI030)
+**The complete list of data types can be checked [in here](https://docs.oracle.com/cd/E11882_01/appdev.112/e10646/oci03typ.htm#LNOCI030)**
 
-<p></p>
-
+---
 
 # SQL Commands
 
@@ -87,7 +88,7 @@ CREATE TABLE tb_prod_categories(
 );
 ```
 
-#### FOREIGN KEY
+#### Foreign Key
 
 The FOREIGN KEY constraint is a key used to link two tables together.
 
@@ -216,7 +217,7 @@ WHERE condition;
 <p>- Undo operations</p>
 
 
-## PL/SQL Procedural Language for SQL
+# PL/SQL Procedural Language for SQL
 <p>- Allows to use programming in SQL instructions</p>
 <p>- Widely used in creating procedures and functions</p>
 
@@ -274,13 +275,13 @@ BEGIN
 END;
 ```
 
-## SQL OPERATORS
+# SQL OPERATORS
 
 
  <table style="width:100%">
   <tr>
-    <td style="text-align:center"><h5>Operator</h5></td>
-    <td style="text-align:center"><h5>Description</h5></td>
+    <th style="text-align:center"><b>Operator</b></th>
+    <th style="text-align:center"><b>Description</b></th>
   </tr>
   <tr>
     <td style="text-align:center"><b><p style="color:cornflowerblue; font-size:20px; text-align:center">LIKE</p></b></td>
@@ -307,8 +308,8 @@ END;
     <td style="text-align:center"><p style="color:cornflowerblue; font-size:20px; text-align:center">Matches to infinite numbers</p></td>
   </tr>
   <tr>
-    <td style="text-align:center"><h5>Logical Operator</h5></td>
-    <td style="text-align:center"><h5>Description</h5></td>
+    <th style="text-align:center"><b>Logical Operator</b></th>
+    <th style="text-align:center"><b>Description</b></th>
   </tr>
   <tr>
     <td style="text-align:center"><b><p style="color:cornflowerblue; font-size:20px; text-align:center">x AND y</p></b></td>
