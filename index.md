@@ -15,31 +15,31 @@ Some features to highlight are:
 * **Backup and recovery** – ensure the integrity of the data in case of system failure. Oracle includes a powerful tool called Recovery Manager (RMAN) – allows DBA to perform cold, hot, and incremental database backups and point-in-time recoveries.
 * **Clustering** – Oracle Real Application Clusters (RAC) – Oracle enables high availability that enables the system is up and running without interruption of services in case one or more server in a cluster fails.
 
-## Main data types
+# Main data types
 An overview of the built-in Oracle data types:
-<h4>CHAR(length)</h4>
+<h3>CHAR(length)</h3>
 <p>- stores fixed-length string</p>
 <p>- the <b>length</b> parameter specifies the length of the string, if the length is shorter, the rest will be filled with spaces</p>
 
-<h4>VARCHAR2(length)</h4>
+<h3>VARCHAR2(length)</h3>
 <p>- stores variable length string</p>
 <p>- the <b>length</b> parameter specifies the maximum length of the string</p>
 
-<h4>DATE</h4>
+<h3>DATE</h3>
 <p>- stores date and time</p>
 
-<h4>INTEGER</h4>
+<h3>INTEGER</h3>
 <p>- stores integer values</p>
 
-<h4>NUMBER(x,y)</h4>
+<h3>NUMBER(x,y)</h3>
 <p>- stores float or integer numbers</p>
 <p>- <b>x</b>: maximum number of digits in all number</p>
 <p>- <b>y</b>: maximum number of digits to the right of the decimal point</p>
 
-<h4>BINARY_FLOAT</h4>
+<h3>BINARY_FLOAT</h3>
 <p>- stores a 32 bits float number</p>
 
-<h4>BINARY_DOUBLE</h4>
+<h3>BINARY_DOUBLE</h3>
 <p>- stores a 64 bits double number</p>
 
 <p></p>
@@ -56,7 +56,7 @@ An overview of the built-in Oracle data types:
 
 # DDL - Data Definition Language
 <p>For instance here is going to be used a small market database</p>
-<h4>CREATE TABLE</h4>
+<h3>CREATE TABLE</h3>
 <p>- To create database and its objects like (table, index, views, store procedure, function and triggers)</p>
 
 #### Primary Key
@@ -120,7 +120,7 @@ CREATE TABLE tb_sales(
 );
 ```
 
-<h4>ALTER TABLE</h4>
+<h3>ALTER TABLE</h3>
 <p>- Used to add, modify, or drop/delete columns in a table</p>
 
 ```sql
@@ -128,14 +128,14 @@ ALTER TABLE table_name
   ADD column_name column_definition;
 ```
 
-<h4>DROP TABLE</h4>
+<h3>DROP TABLE</h3>
 <p>- Allows you to remove or delete a table from the Oracle database</p>
 
 ```sql
 DROP TABLE table_name;
 ```
 
-<h4>TRUNCATE TABLE</h4>
+<h3>TRUNCATE TABLE</h3>
 <p>- Remove all records from a table, including all spaces allocated for the records are removed</p>
 
 ```sql
@@ -145,7 +145,7 @@ TRUNCATE TABLE table_name;
 
 # DML - Data Manipulation Language
 
-<h4>SELECT</h4>
+<h3>SELECT</h3>
 <p>- Retrieve data from the a database</p>
 
 ```sql
@@ -161,14 +161,14 @@ FROM table_name
 WHERE condition;
 ```
 
-<h4>DESCRIBE</h4>
+<h3>DESCRIBE</h3>
 <p>- Command to describe the structure of a table</p>
 
 ```sql
 DESCRIBE table_name;
 ```
 
-<h4>INSERT</h4>
+<h3>INSERT</h3>
 <p>- Add data into a table</p>
 <p>- The order in <b>VALUES</b> corresponds to the order in which the table columns are</p>
 
@@ -177,7 +177,7 @@ INSERT INTO table_name (column1, column2, column3, ... columnN)
 VALUES (value1, value2, value3, ... valueN);
 ```
 
-<h4>UPDATE</h4>
+<h3>UPDATE</h3>
 <p>- Update existing records in a table in an Oracle database</p>
 <p>- In the statement, the table containing the rows to be changed must be specified</p>
 <p>- A <b>SET</b> clause that contains the columns and the new values</p>
@@ -198,7 +198,7 @@ UPDATE table_name
   SET column4 = NULL;
 ```
 
-<h4>DELETE</h4>
+<h3>DELETE</h3>
 <p>- Remove rows in a table</p>
 <p>- You can use <b>WHERE</b> clause to specifies the rows to be removed, if you don't use it, all the rows will be removed</p>
 
@@ -209,14 +209,14 @@ WHERE condition;
 
 # TCL - Transaction Control Language 
 
-<h4>COMMIT</h4>
+<h3>COMMIT</h3>
 <p>- Makes the operations permanent</p>
 
-<h4>ROLLBACK</h4>
+<h3>ROLLBACK</h3>
 <p>- Undo operations</p>
 
 
-# PL/SQL Procedural Language for SQL
+## PL/SQL Procedural Language for SQL
 <p>- Allows to use programming in SQL instructions</p>
 <p>- Widely used in creating procedures and functions</p>
 
@@ -274,7 +274,8 @@ BEGIN
 END;
 ```
 
-# SQL OPERATORS
+## SQL OPERATORS
+
 
  <table style="width:100%">
   <tr>
@@ -372,9 +373,9 @@ ORDER BY 5; /*You can use Column index or Column name*/
 # FUNCTIONS
 ## Some of the most used functions:
 
-<h4>LOWER(column_name)</h4>
+<h3>LOWER(column_name)</h3>
 <p>- Converts all registers in the column to lower case</p>
-<h4>UPPER(column_name)</h4>
+<h3>UPPER(column_name)</h3>
 <p>- Converts all registers in the column to upper case</p>
 
 ```sql
@@ -382,7 +383,7 @@ SELECT UPPER(first_name), LOWER(last_name)
 FROM tb_customers;
 ```
 
-<h4>CAST(x AS type)</h4>
+<h3>CAST(x AS type)</h3>
 <p>- Converts <b>x</b> to the <b>type</b></p>
 
 ```sql
@@ -393,7 +394,7 @@ FROM tb_products
 WHERE id_product = 117;
 ```
 
-<h4>AVG(x)</h4>
+<h3>AVG(x)</h3>
 <p>- Returns the average value of <b>x</b></p>
 
 ```sql
@@ -401,7 +402,7 @@ SELECT AVG(price)
 FROM tb_products;
 ```
 
-<h4>COUNT(x)</h4>
+<h3>COUNT(x)</h3>
 <p>- Returns count of <b>x</b></p>
 
 ```sql
@@ -409,7 +410,7 @@ SELECT COUNT(ROWID)
 FROM tb_sales;
 ```
 
-<h4>MAX(x)   MIN(x)</h4>
+<h3>MAX(x)   MIN(x)</h3>
 <p>- Used to get the max or min values of <b>x</b></p>
 
 ```sql
@@ -418,8 +419,8 @@ FROM tb_products
 WHERE price = (SELECT MAX(price) FROM tb_products);
 ```
 
-<h4>SUM(x)</h4>
-<p>- Sums up all values in column X and returns the total</p>
+<h3>SUM(x)</h3>
+<p>- Sums up all values ​​in column X and returns the total</p>
 
 ```sql
 SELECT SUM(price)
